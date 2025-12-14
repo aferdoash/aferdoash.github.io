@@ -1,0 +1,48 @@
+---
+# _layouts/category.html
+layout: default
+---
+<main>
+  <header>
+    <h1>Posts in {{ page.category | capitalize }}</h1>
+  </header>
+
+  <section class="category-posts">
+    <ul>
+      {% assign cat = page.category | downcase %}
+      {% for post in site.categories[cat] %}
+        <li>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time> —
+          <a href="{{ post.url }}">{{ post.title }}</a>
+          {% if post.excerpt %}
+            <p class="excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+          {% endif %}
+          {% if post.tags %}
+            <small>· tags:
+              {% for t in post.tags %}
+                <a href="/tag/{{ t | slugify }}/">{{ t }}</a>{% if forloop.last == false %}, {% endif %}
+              {% endfor %}
+            </small>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <aside class="category-tags">
+    <h2>Subtopics (tags)</h2>
+    <ul>
+      {% assign tags_in_cat = "" | split: "" %}
+      {% for post in site.categories[cat] %}
+        {% for t in post.tags %}
+          {% unless tags_in_cat contains t %}
+            {% capture tags_in_cat %}{{ tags_in_cat | push: t | join: "," }}{% endcapture %}
+          {% endunless %}
+        {% endfor %}
+      {% endfor %}
+      {% for t in tags_in_cat %}
+        <li><a href="/tag/{{ t | slugify }}/">{{ t }}</a></li>
+      {% endfor %}
+    </ul>
+  </aside>
+</main>
