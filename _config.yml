@@ -1,0 +1,14 @@
+# --- add or merge into your _config.yml ---
+markdown: kramdown
+
+# Pretty, SEO-friendly permalinks showing category in URL
+permalink: /:categories/:year/:month/:day/:title/
+
+# Expose collections if you later want non-dated content (optional)
+collections:
+  guides:
+    output: true
+
+# Optional: specify your default timezone and site title (example)
+timezone: "Asia/Kolkata"
+title: "Afreen Ferdoash"
