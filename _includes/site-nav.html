@@ -1,0 +1,12 @@
+{%- comment -%}
+_includes/site-nav.html
+Renders the navigation defined in _data/navigation.yml -> main
+{%- endcomment -%}
+
+<nav class="site-nav">
+  <ul>
+    {% for item in site.data.navigation.main %}
+      <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
