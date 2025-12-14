@@ -1,0 +1,12 @@
+# _data/navigation.yml
+main:
+  - title: "Home"
+    url: /
+  - title: "Blog"
+    url: / # adjust if you use /blog/ as a posts index
+  - title: "Data Science"
+    url: /category/data-science/
+  - title: "Statistics"
+    url: /category/statistics/
+  - title: "NLP"
+    url: /category/nlp/
